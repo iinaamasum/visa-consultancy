@@ -2,7 +2,11 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 
 const Home = () => {
-  return <Banner />;
+  return (
+    <div className="w-full">
+      <Banner />
+    </div>
+  );
 };
 
 export default Home;

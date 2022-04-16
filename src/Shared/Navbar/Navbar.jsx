@@ -3,6 +3,7 @@ import { BiFoodMenu } from 'react-icons/bi';
 import { BsFillCartFill } from 'react-icons/bs';
 import { MdRestaurantMenu } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import logo from '../../images/images.png';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -15,7 +16,7 @@ export default function Navbar() {
               to="/home"
               className="text-3xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
             >
-              Name
+              <img className="h-12 w-full" src={logo} alt="" />
             </Link>
             <button
               className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
