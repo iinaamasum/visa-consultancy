@@ -3,7 +3,7 @@ import React from 'react';
 const Card = ({ service }) => {
   const { name, price, img, des } = service;
   return (
-    <div className="p-4 md:w-1/3">
+    <div className="">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden  hover:shadow-2xl transition-all duration-150 ease-in-out">
         <img
           className="lg:h-[250px] md:h-36 w-full object-cover object-center"
