@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Travel Service",
+    "name": "Travel Service Guide",
     "price": "$915.81",
     "des": "We provide delievery and pick of documents, also cargo pick and drop at nominal cost. We can provide employment emigration clearance for Gulf countries.",
     "img": "https://i.ibb.co/nskcvbb/travel-services.jpg"
@@ -15,21 +15,21 @@
   },
   {
     "id": 3,
-    "name": "Car Rental",
+    "name": "Car Rental Suggestions",
     "price": "$985.72",
     "des": "Right Insurance Services Overseas Travel Insurance Specialist.  Looking forward to an everlasting relationship and assuring you of our best services and finest hospitality at all times.",
     "img": "https://i.ibb.co/16TDvh9/car-rental.jpg"
   },
   {
     "id": 4,
-    "name": "Emigration Services",
+    "name": "Emigration Help",
     "price": "$661.74",
     "des": "Please do contact me for any legalization work on Birth/ Marriage/Educational Certificates. We can provide Mantralaya Attestation from BD Govt. and futher to Gulf country attestation, if any certificate issued in other states you need to attest from respective states, then send us for consulate attestation.",
     "img": "https://i.ibb.co/1LFJ2Br/emigration.jpg"
   },
   {
     "id": 5,
-    "name": "Insurance",
+    "name": "Insurance Guidelines",
     "price": "$732.09",
     "des": "We provide Invoice Legalization services on your export invoices,certificate of Origin from Gulf and Egypt Consulate. We offer Legalization of Services through required Gulf countries",
     "img": "https://i.ibb.co/p2Jy9QL/insurance.jpg"

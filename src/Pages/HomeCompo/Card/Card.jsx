@@ -1,10 +1,11 @@
 import React from 'react';
+import { MdArrowForwardIos } from 'react-icons/md';
 
 const Card = ({ service }) => {
   const { name, price, img, des } = service;
   return (
     <div className="">
-      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden  hover:shadow-xl transition-all duration-150 ease-in-out">
+      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition-all duration-150 ease-in-out">
         <img
           className="h-72 w-full object-cover object-center"
           src={img}
@@ -68,10 +69,10 @@ const Card = ({ service }) => {
             </span>
           </div>
           <button
-            className="text-black font-sans tracking-wide font-semibold text-xl mr-3 hover:bg-gray-700 px-5 py-2 rounded-full hover:text-white shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-full mt-6 hover:shadow-xl"
+            className="text-black font-sans tracking-wide font-bold text-xl mr-3 hover:bg-slate-500 px-5 py-2 rounded-full hover:text-white shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-full mt-6 hover:shadow-xl inline-flex justify-center items-center sticky bottom-0"
             type="button"
           >
-            Check Out
+            Check Out <MdArrowForwardIos className="ml-4 font-bold" />
           </button>
         </div>
       </div>

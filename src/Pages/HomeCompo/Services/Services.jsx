@@ -7,7 +7,7 @@ const Services = () => {
   return (
     <div>
       <h1 className="text-center text-4xl text-red-500  mt-10 mb-5 font-bold hover:text-red-600">
-        <span className="border-b-4 border-red-600 ">Our Services</span>
+        <span className="border-b-4 border-red-600 ">Offered Services</span>
       </h1>
 
       <section className="text-gray-600 body-font">
