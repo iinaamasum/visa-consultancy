@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 const Membership = () => {
   const [price, setPrice] = useState([49.99, 99.99, 139.99, 259.99]);
+  const [txt, setTxt] = useState('mo');
 
   const handleMonthly = () => {
     setPrice([49.99, 99.99, 139.99, 259.99]);
+    setTxt('mo');
   };
   const handleAnnually = () => {
-    setPrice(price.map((p) => p * 4));
+    setPrice([49.99 * 4, 99.99 * 4, 139.99 * 4, 259.99 * 4]);
+    setTxt('ann');
   };
 
   return (
@@ -49,7 +52,7 @@ const Membership = () => {
                 <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                   <span>${price[0]}</span>
                   <span className="text-lg ml-1 font-normal text-gray-500">
-                    /mo
+                    /{txt}
                   </span>
                 </h1>
                 <p className="flex items-center text-gray-600 mb-2">
@@ -124,10 +127,10 @@ const Membership = () => {
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                   PRO
                 </h2>
-                <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                   <span>${price[1]}</span>
                   <span className="text-lg ml-1 font-normal text-gray-500">
-                    /mo
+                    /{txt}
                   </span>
                 </h1>
                 <p className="flex items-center text-gray-600 mb-2">
@@ -215,10 +218,10 @@ const Membership = () => {
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium uppercase">
                   Special
                 </h2>
-                <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                   <span>${price[2]}</span>
                   <span className="text-lg ml-1 font-normal text-gray-500">
-                    /mo
+                    /{txt}
                   </span>
                 </h1>
                 <p className="flex items-center text-gray-600 mb-2">
@@ -322,10 +325,10 @@ const Membership = () => {
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium uppercase">
                   business
                 </h2>
-                <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                   <span>${price[3]}</span>
                   <span className="text-lg ml-1 font-normal text-gray-500">
-                    /mo
+                    /{txt}
                   </span>
                 </h1>
                 <p className="flex items-center text-gray-600 mb-2">
