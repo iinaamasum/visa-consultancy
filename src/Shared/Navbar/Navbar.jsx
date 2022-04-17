@@ -11,9 +11,9 @@ export default function Navbar() {
     { id: 1, path: '/home', name: 'Home' },
     { id: 2, path: '/membership', name: 'Membership' },
     { id: 3, path: '/checkout', name: 'Checkout' },
-    { id: 3, path: '/blog', name: 'Blog' },
-    { id: 4, path: '/about', name: 'About' },
-    { id: 5, path: '/contact', name: 'Contact' },
+    { id: 4, path: '/blog', name: 'Blog' },
+    { id: 5, path: '/about', name: 'About' },
+    { id: 6, path: '/contact', name: 'Contact' },
   ];
   const navigate = useNavigate();
   return (
@@ -58,7 +58,7 @@ export default function Navbar() {
               ))}
               <div className="flex items-center w-full lg:w-auto">
                 <BsFillCartFill
-                  onclick={() => navigate('/checkout')}
+                  onClick={() => navigate('/checkout')}
                   className="text-3xl inline-flex items-center mr-6 text-red-600 cursor-pointer hover:text-red-700"
                 />
                 <button
