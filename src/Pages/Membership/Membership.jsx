@@ -9,7 +9,7 @@ const Membership = () => {
     setTxt('mo');
   };
   const handleAnnually = () => {
-    setPrice([49.99 * 4, 99.99 * 4, 139.99 * 4, 259.99 * 4]);
+    setPrice([49.99 * 12, 99.99 * 12, 139.99 * 12, 259.99 * 12]);
     setTxt('ann');
   };
 
@@ -103,7 +103,7 @@ const Membership = () => {
                   </span>
                   Packaging guidance
                 </p>
-                <button className="flex items-center mt-auto text-white bg-slate-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-600 rounded">
+                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
                   Check Out
                   <svg
                     fill="none"
@@ -111,7 +111,7 @@ const Membership = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
+                    className="w-6 h-6 ml-auto "
                     viewBox="0 0 24 24"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -128,7 +128,7 @@ const Membership = () => {
                   PRO
                 </h2>
                 <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
-                  <span>${price[1]}</span>
+                  <span>${price[1].toFixed(2)}</span>
                   <span className="text-lg ml-1 font-normal text-gray-500">
                     /{txt}
                   </span>
@@ -197,7 +197,7 @@ const Membership = () => {
                   </span>
                   Short Time Visa Achieving Promise
                 </p>
-                <button className="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">
+                <button className="flex items-center justify-center mt-auto bg-indigo-500 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-indigo-700 text-white text-xl">
                   Check Out
                   <svg
                     fill="none"
@@ -205,7 +205,7 @@ const Membership = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
+                    className="w-6 h-6 ml-auto "
                     viewBox="0 0 24 24"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -304,7 +304,7 @@ const Membership = () => {
                   </span>
                   Part Time Job Finding
                 </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
                   Check Out
                   <svg
                     fill="none"
@@ -312,7 +312,7 @@ const Membership = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
+                    className="w-6 h-6 ml-auto "
                     viewBox="0 0 24 24"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -427,7 +427,7 @@ const Membership = () => {
                   </span>
                   Short Time Visa Achieving Promise
                 </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
                   Check Out
                   <svg
                     fill="none"
@@ -435,7 +435,7 @@ const Membership = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
+                    className="w-6 h-6 ml-auto "
                     viewBox="0 0 24 24"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
