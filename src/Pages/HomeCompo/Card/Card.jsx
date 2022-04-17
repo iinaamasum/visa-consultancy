@@ -4,13 +4,13 @@ const Card = ({ service }) => {
   const { name, price, img, des } = service;
   return (
     <div className="">
-      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden  hover:shadow-2xl transition-all duration-150 ease-in-out">
+      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden  hover:shadow-xl transition-all duration-150 ease-in-out">
         <img
           className="h-72 w-full object-cover object-center"
           src={img}
           alt="blog"
         />
-        <div className="p-6">
+        <div className="px-6 py-2">
           <div className="border-l-2 border-red-600 my-4">
             <h2 className="pl-3 py-0 tracking-wide text-3xl title-font font-medium text-red-600 mb-1">
               {name}
@@ -20,7 +20,7 @@ const Card = ({ service }) => {
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
             Cost: {price}
           </h1>
-          <p className="leading-relaxed mb-3">{des}</p>
+          <p className="leading-relaxed mb-3">{des.slice(0, 150)}...</p>
           <div className="flex items-center flex-wrap ">
             <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
               Learn More
@@ -67,6 +67,12 @@ const Card = ({ service }) => {
               6
             </span>
           </div>
+          <button
+            className="text-black font-sans tracking-wide font-semibold text-xl mr-3 hover:bg-gray-700 px-5 py-2 rounded-full hover:text-white shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-full mt-6 hover:shadow-xl"
+            type="button"
+          >
+            Check Out
+          </button>
         </div>
       </div>
     </div>

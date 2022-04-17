@@ -47,7 +47,7 @@ export default function Navbar() {
             <div className="lg:flex lg:items-center lg:justify-center w-full lg:w-auto">
               {navLinks.map((link) => (
                 <Link
-                  className="text-2xl text-slate-400 hover:text-slate-800 active:text-slate-700 font-semibold mr-0 md:mr-4 transition-all duration-500 ease-in-out"
+                  className="text-xl text-slate-400 hover:text-red-800 active:text-red-700 font-semibold mr-0 md:mr-4 transition-all duration-500 ease-in-out"
                   key={link.id}
                   to={link.path}
                 >
