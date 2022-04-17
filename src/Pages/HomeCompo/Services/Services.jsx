@@ -12,7 +12,7 @@ const Services = () => {
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 pb-10 pt-4 mx-auto">
-          <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {services.map((service) => (
               <Card key={service.id} service={service} />
             ))}

@@ -6,14 +6,17 @@ const Card = ({ service }) => {
     <div className="">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden  hover:shadow-2xl transition-all duration-150 ease-in-out">
         <img
-          className="lg:h-[250px] md:h-36 w-full object-cover object-center"
+          className="h-72 w-full object-cover object-center"
           src={img}
           alt="blog"
         />
         <div className="p-6">
-          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-            {name}
-          </h2>
+          <div className="border-l-2 border-red-600 my-4">
+            <h2 className="pl-3 py-0 tracking-wide text-3xl title-font font-medium text-red-600 mb-1">
+              {name}
+            </h2>
+          </div>
+
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
             Cost: {price}
           </h1>
