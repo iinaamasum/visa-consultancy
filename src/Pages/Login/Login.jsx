@@ -1,8 +1,55 @@
 import React from 'react';
+import {
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from 'react-firebase-hooks/auth';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
+import auth from '../../firebase.init';
 
 const Login = () => {
+  const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
+    useSignInWithGoogle(auth);
+  const [signInWithGithub, userGithub, loadingGithub, errorGithub] =
+    useSignInWithGithub(auth);
+
+  if (errorGithub) {
+    return (
+      <div>
+        <p>Error: {errorGithub.message}</p>
+      </div>
+    );
+  }
+  if (loadingGithub) {
+    return <p>Loading...</p>;
+  }
+  if (userGithub) {
+    console.log(userGithub);
+    return (
+      <div>
+        <p>Signed In User: {userGithub?.user?.displayName}</p>
+      </div>
+    );
+  }
+
+  if (errorGoogle) {
+    return (
+      <div>
+        <p>Error: {errorGoogle.message}</p>
+      </div>
+    );
+  }
+  if (loadingGoogle) {
+    return <p>Loading...</p>;
+  }
+  if (userGoogle) {
+    return (
+      <div>
+        <p>Signed In User: {userGoogle.email}</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <section className="my-5">
@@ -12,11 +59,17 @@ const Login = () => {
               Sign In with
             </h3>
             <div className="flex justify-center gap-3">
-              <button className="tracking-wide uppercase text-center bg-slate-200 hover:bg-slate-400 text-black font-semibold text-xl px-3 py-2 rounded flex items-center justify-between">
+              <button
+                onClick={() => signInWithGithub()}
+                className="tracking-wide uppercase text-center bg-slate-200 hover:bg-slate-400 text-black font-semibold text-xl px-3 py-2 rounded flex items-center justify-between"
+              >
                 <BsGithub />
                 <span className="pl-2">Github</span>
               </button>
-              <button className="tracking-wide uppercase text-center bg-slate-100 hover:bg-slate-300 text-black font-semibold text-xl px-3 py-2 rounded flex items-center justify-between">
+              <button
+                onClick={() => signInWithGoogle()}
+                className="tracking-wide uppercase text-center bg-slate-100 hover:bg-slate-300 text-black font-semibold text-xl px-3 py-2 rounded flex items-center justify-between"
+              >
                 <FcGoogle />
                 <span className="pl-2">Google</span>
               </button>
@@ -39,8 +92,7 @@ const Login = () => {
                 <input
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="email"
-                  name=""
-                  id=""
+                  name="email"
                   placeholder="Enter Your Email"
                 />
               </div>
@@ -55,18 +107,12 @@ const Login = () => {
                 <input
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
-                  name=""
-                  id=""
+                  name="password"
                   placeholder="Enter Your Password"
                 />
               </div>
               <div className="pt-4 flex items-center justify-left">
-                <input
-                  className="w-4 text-cyan-500"
-                  type="checkbox"
-                  name=""
-                  id=""
-                />
+                <input className="w-4 text-cyan-500" type="checkbox" name="" />
                 <small className="pl-2 text-cyan-500 text-semibold tracking-wide">
                   Remember Me
                 </small>
