@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../images/images.png';
 
 const Footer = () => {
   const navLinks = [
     { id: 1, path: '/home', name: 'Home' },
-    { id: 2, path: '/shop', name: 'Shop' },
-    { id: 3, path: '/review', name: 'Review' },
+    { id: 2, path: '/membership', name: 'Membership' },
+    { id: 3, path: '/blog', name: 'Blog' },
     { id: 4, path: '/about', name: 'About' },
     { id: 5, path: '/contact', name: 'Contact' },
   ];
@@ -14,7 +15,9 @@ const Footer = () => {
       <div className="grid container grid-cols-1 mx-auto lg:grid-cols-2">
         <div className="px-4 py-16 border-b border-gray-800 md:border-b-0 md:border-l lg:pl-12 lg:order-last">
           <div className="block lg:hidden">
-            <span className="inline-block w-32 h-10 bg-gray-700 rounded-lg"></span>
+            <span className="bg-gray-700 rounded-lg text-white inline-flex justify-center items-center tex-2xl">
+              <img className="rounded-lg" src={logo} alt="" />
+            </span>
           </div>
 
           <div className="mt-12 space-y-4 lg:mt-0">
@@ -68,17 +71,17 @@ const Footer = () => {
         </div>
 
         <div className="px-4 py-16 lg:pr-12">
-          <div className="hidden lg:block tex-2xl">
-            <span className="w-32 h-10 bg-gray-700 rounded-lg text-white inline-flex justify-center items-center tex-2xl">
-              Wallet
+          <div className="tex-2xl py-6 hidden lg:block">
+            <span className="bg-gray-700 rounded-lg text-white inline-flex justify-center items-center tex-2xl">
+              <img className="rounded-lg" src={logo} alt="" />
             </span>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 lg:mt-12">
-            <div>
-              <p className="font-bold text-white">Helpful</p>
+          <div className="flex items-center justify-between gap-4 lg:mt-12 w-full">
+            <div className="w-1/3">
+              <p className="font-bold text-white text-xl">Important Links</p>
 
-              <nav className="flex flex-col mt-2 space-y-1 text-xs text-gray-400">
+              <nav className="flex flex-col mt-2 space-y-1 text-md text-gray-400">
                 {navLinks.map((link) => (
                   <Link
                     key={link.id}
@@ -91,61 +94,39 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div>
-              <p className="font-bold text-white">Solutions</p>
-
-              <nav className="flex flex-col mt-2 space-y-1 text-xs text-gray-400">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.id}
-                    className="hover:opacity-75"
-                    to={link.path}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <div>
-              <p className="font-bold text-white">About</p>
-
-              <nav className="flex flex-col mt-2 space-y-1 text-xs text-gray-400">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.id}
-                    className="hover:opacity-75"
-                    to={link.path}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
+            <div className="text-gray-400 w-2/3 text-justify">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+              ipsa, libero sit dolorum quos ut nostrum veniam neque magni nobis
+              ad harum rem, similique praesentium aperiam eius corrupti
+              reprehenderit quibusdam? Lorem ipsum dolor sit amet consectetur,
+              adipisicing elit. Exercitationem, maiores?
             </div>
           </div>
 
-          <div className="md:flex mt-12 mx-auto text-xs text-white items-center text-center">
-            <p className="inline-flex items-center justify-between">
+          <div className="md:flex mt-12 mx-auto text-lg text-white items-center text-center">
+            <p className="inline-flex items-center text-lg  justify-between">
               {' '}
               &copy; {new Date().getFullYear()}
               <a
-                className="text-orange-500 text-base pl-1 sm:pl-2"
+                className="text-orange-500  pl-1 sm:pl-2 pr-2"
                 href="https://github.com/iinaamasum"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 iinaamasum
+              </a>{' '}
+            </p>
+            <p>
+              All rights reserved. Want to hire me?{' '}
+              <a
+                className="text-blue-500 pl-3 underline"
+                href="https://github.com/iinaamasum"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Click Here
               </a>
             </p>
-            {navLinks.map((link) => (
-              <Link
-                key={link.id}
-                className="pl-2 md:pl-6 hover:opacity-75"
-                to={link.path}
-              >
-                {link.name}
-              </Link>
-            ))}
           </div>
         </div>
       </div>

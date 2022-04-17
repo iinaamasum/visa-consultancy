@@ -7,6 +7,13 @@ import logo from '../../images/images.png';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const navLinks = [
+    { id: 1, path: '/home', name: 'Home' },
+    { id: 2, path: '/membership', name: 'Membership' },
+    { id: 3, path: '/blog', name: 'Blog' },
+    { id: 4, path: '/about', name: 'About' },
+    { id: 5, path: '/contact', name: 'Contact' },
+  ];
   return (
     <>
       <nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-white pb-3 shadow sticky top-0 z-50">
@@ -38,6 +45,15 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <div className="lg:flex lg:items-center lg:justify-center w-full lg:w-auto">
+              {navLinks.map((link) => (
+                <Link
+                  className="text-2xl text-slate-400 hover:text-slate-800 active:text-slate-700 font-semibold mr-0 md:mr-4 transition-all duration-500 ease-in-out"
+                  key={link.id}
+                  to={link.path}
+                >
+                  {link.name}
+                </Link>
+              ))}
               <div className="flex items-center w-full lg:w-auto">
                 <BsFillCartFill className="text-3xl inline-flex items-center mr-6 text-red-600 cursor-pointer hover:text-red-700" />
                 <button
