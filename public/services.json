@@ -1,45 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Travel Service Guide",
-    "price": "$915.81",
-    "des": "We provide delievery and pick of documents, also cargo pick and drop at nominal cost. We can provide employment emigration clearance for Gulf countries.",
+    "name": "Travel Service Guide For 10 Days",
+    "price": "$15.81",
+    "des": "I am providing you premium travel services  for 10 days. In those days, daily 8 hours and will visit you 20 beautiful places.",
     "img": "https://i.ibb.co/nskcvbb/travel-services.jpg"
   },
   {
     "id": 2,
-    "name": "Attestation of Certificates",
-    "price": "$881.60",
-    "des": "Right Insurance Services Overseas Travel Insurance Specialist In Association with VCS Vipul Shah  Consultant Right Insurance Service Overseas Travel Insurance Specialist",
+    "name": "Attestation of Certificates Advices",
+    "price": "$20.60",
+    "des": "Attestation of your important document for higher study or abroad work life. It is one of the most difficult task. I can give you guidance to do it fast.",
     "img": "https://i.ibb.co/nPRy786/attestations.jpg"
   },
   {
     "id": 3,
-    "name": "Car Rental Suggestions",
-    "price": "$985.72",
-    "des": "Right Insurance Services Overseas Travel Insurance Specialist.  Looking forward to an everlasting relationship and assuring you of our best services and finest hospitality at all times.",
+    "name": "Car Rental Suggestions and Guidelines",
+    "price": "$9.72",
+    "des": "Car rental is very helpful for you are not at home and you are going abroad for many days. I can help you to find out the best deals",
     "img": "https://i.ibb.co/16TDvh9/car-rental.jpg"
   },
   {
     "id": 4,
-    "name": "Emigration Help",
-    "price": "$661.74",
-    "des": "Please do contact me for any legalization work on Birth/ Marriage/Educational Certificates. We can provide Mantralaya Attestation from BD Govt. and futher to Gulf country attestation, if any certificate issued in other states you need to attest from respective states, then send us for consulate attestation.",
+    "name": "Emigration Process Preparation and Help",
+    "price": "$66.74",
+    "des": "Emigration process is so difficult for those people who do not move other countries in past. In this process I can help you to do smooth emigration.",
     "img": "https://i.ibb.co/1LFJ2Br/emigration.jpg"
   },
   {
     "id": 5,
-    "name": "Insurance Guidelines",
-    "price": "$732.09",
-    "des": "We provide Invoice Legalization services on your export invoices,certificate of Origin from Gulf and Egypt Consulate. We offer Legalization of Services through required Gulf countries",
+    "name": "Insurance Guidelines and Bank Suggestions",
+    "price": "$7.09",
+    "des": "I will guide you to do insurance in the abroad country. I will contact with the insurance company on behalf of you and try to find out best policies at low cost.",
     "img": "https://i.ibb.co/p2Jy9QL/insurance.jpg"
   },
   {
     "id": 6,
-
-    "name": "Airport Assistance",
-    "price": "$395.47",
-    "des": "Making you Travel Beyond Horizon. In Association with : Visa Consultancy Services Pvt. Ltd. Introducing Travel Consultancy to all destinations accross the globe.",
+    "name": "Airport Assistance and Hotel Booking Guidelines",
+    "price": "$45.47",
+    "des": "I can help you to find out best home or hotel while you are willing to travel to other countries. I can also give you airport assistance so that you do not have to wary about the flight.",
     "img": "https://i.ibb.co/CwtLNXc/airpot-assistance.jpg"
   }
 ]

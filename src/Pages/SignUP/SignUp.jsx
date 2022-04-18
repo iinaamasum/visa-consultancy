@@ -68,9 +68,8 @@ const SignUp = () => {
     if (userInfo.password !== userInfo.confirmPassword) {
       setErrors({ ...errors, confirmPasswordError: 'Password Mismatched' });
       setUserInfo({ ...userInfo, confirmPassword: '' });
-    } else {
-      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     }
+    createUserWithEmailAndPassword(userInfo.email, userInfo.password);
   };
 
   const navigate = useNavigate();

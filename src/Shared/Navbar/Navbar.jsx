@@ -10,7 +10,7 @@ import logo from '../../images/images.png';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   console.log(user);
 
@@ -77,7 +77,9 @@ export default function Navbar() {
                       {user.displayName}
                     </span>
                   ) : (
-                    'Name Not Set '
+                    <span className="bg-slate-200 mr-4 rounded-lg px-6 py-2 ">
+                      Name Not Set
+                    </span>
                   )}
                   <button
                     onClick={() => signOut(auth)}
