@@ -29,7 +29,7 @@ const Login = () => {
     otherError: '',
   });
 
-  const [signInWithEmailAndPassword, user1, loading1, error1] =
+  const [signInWithEmailAndPassword, user1, loading1, hookError] =
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, sending, error] =
@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   const handlePasswordLogIn = (e) => {
-    const passwordRegex = /(?=.*[!#$%&?^* "])/;
+    const passwordRegex = /(?=.*[!#$%&?^*@~() "])/;
     const validPassword = passwordRegex.test(e.target.value);
     if (validPassword) {
       setUserInfo({ ...userInfo, password: e.target.value });
@@ -66,12 +66,27 @@ const Login = () => {
     }
   };
 
-  console.log(userInfo);
-
   const handleSignIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
   };
+
+  useEffect(() => {
+    const error = hookError || errorGoogle || errorGithub;
+    if (error) {
+      switch (error?.code) {
+        case 'auth/invalid-email':
+          toast.error('Invalid email provided, please provide a valid email');
+          break;
+
+        case 'auth/invalid-password':
+          toast.error('Wrong password.');
+          break;
+        default:
+          toast.error('Wrong password...');
+      }
+    }
+  }, [hookError, errorGithub, errorGoogle]);
 
   const navigate = useNavigate();
   const location = useLocation();

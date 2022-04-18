@@ -12,8 +12,6 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [user] = useAuthState(auth);
 
-  console.log(user);
-
   const navLinks = [
     { id: 1, path: '/home', name: 'Home' },
     { id: 2, path: '/membership', name: 'Membership' },

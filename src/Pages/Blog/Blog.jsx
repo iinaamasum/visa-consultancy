@@ -51,7 +51,7 @@ const Blog = () => {
           </div>
         </div>
         <div className="grid grid-flow-row gap-4 md:gap-10 px-0 md:px-6">
-          <table class="table-fixed w-full py-10 my-10 shadow">
+          <table className="table-fixed w-full py-10 my-10 shadow">
             <thead>
               <tr className="text-2xl">
                 <th>Authorization</th>

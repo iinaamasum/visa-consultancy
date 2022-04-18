@@ -52,7 +52,7 @@ const SignUp = () => {
   };
 
   const handlePassword = (e) => {
-    const passwordRegex = /(?=.*[!#$%&?^* "])/;
+    const passwordRegex = /(?=.*[!#$%&?^*@~() "])/;
     const validPassword = passwordRegex.test(e.target.value);
     if (validPassword) {
       setUserInfo({ ...userInfo, password: e.target.value });
@@ -65,7 +65,6 @@ const SignUp = () => {
       setUserInfo({ ...userInfo, password: '' });
     }
   };
-  console.log(userInfo.password);
 
   const handleConfirmPassword = (e) => {
     setUserInfo({ ...userInfo, confirmPassword: e.target.value });
