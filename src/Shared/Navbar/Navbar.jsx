@@ -1,12 +1,19 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { BiFoodMenu } from 'react-icons/bi';
 import { BsFillCartFill } from 'react-icons/bs';
 import { MdRestaurantMenu } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import logo from '../../images/images.png';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [user, loading, error] = useAuthState(auth);
+
+  console.log(user);
+
   const navLinks = [
     { id: 1, path: '/home', name: 'Home' },
     { id: 2, path: '/membership', name: 'Membership' },
@@ -56,27 +63,41 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <div className="flex items-center w-full lg:w-auto">
-                <BsFillCartFill
-                  onClick={() => navigate('/checkout')}
-                  className="text-3xl inline-flex items-center mr-6 text-red-600 cursor-pointer hover:text-red-700"
-                />
-                <button
-                  onClick={() => navigate('/login')}
-                  className="text-black font-sans tracking-wide font-semibold text-xl mr-3 hover:bg-gray-700 px-5 py-2 rounded-full hover:text-white shadow hover:shadow-lg outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-1/2 lg:w-auto"
-                  type="button"
-                >
-                  Log In
-                </button>
-                <button
-                  onClick={() => navigate('/signup')}
-                  className="bg-red-500 text-white active:bg-red-600
+              {user ? (
+                <div className="text-xl">
+                  {user?.displayName ? user.displayName : 'Name Not Set '}
+                  <button
+                    onClick={() => signOut(auth)}
+                    className="bg-red-500 text-white active:bg-red-600
+              hover:bg-red-600 font-bold  text-xl px-5 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-1/2 lg:w-auto"
+                    type="button"
+                  >
+                    Log Out
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center w-full lg:w-auto">
+                  <BsFillCartFill
+                    onClick={() => navigate('/checkout')}
+                    className="text-3xl inline-flex items-center mr-6 text-red-600 cursor-pointer hover:text-red-700"
+                  />
+                  <button
+                    onClick={() => navigate('/login')}
+                    className="text-black font-sans tracking-wide font-semibold text-xl mr-3 hover:bg-gray-700 px-5 py-2 rounded-full hover:text-white shadow hover:shadow-lg outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-1/2 lg:w-auto"
+                    type="button"
+                  >
+                    Log In
+                  </button>
+                  <button
+                    onClick={() => navigate('/signup')}
+                    className="bg-red-500 text-white active:bg-red-600
                   hover:bg-red-600 font-bold  text-xl px-5 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-1/2 lg:w-auto"
-                  type="button"
-                >
-                  Sign Up
-                </button>
-              </div>
+                    type="button"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

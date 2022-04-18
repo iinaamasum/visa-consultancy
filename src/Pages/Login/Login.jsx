@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
@@ -25,8 +26,10 @@ const Login = () => {
     otherError: '',
   });
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user1, loading1, error1] =
     useSignInWithEmailAndPassword(auth);
+
+  const [user, loading, error] = useAuthState(auth);
 
   const handleEmailLogIn = (e) => {
     const passRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
