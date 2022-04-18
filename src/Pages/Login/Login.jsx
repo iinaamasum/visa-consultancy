@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
+import toast, { Toaster } from 'react-hot-toast';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -30,7 +32,10 @@ const Login = () => {
   const [signInWithEmailAndPassword, user1, loading1, error1] =
     useSignInWithEmailAndPassword(auth);
 
-  const [user, loading, error] = useAuthState(auth);
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
+
+  const [user, loading, error2] = useAuthState(auth);
 
   const handleEmailLogIn = (e) => {
     const passRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -161,6 +166,19 @@ const Login = () => {
                   Sign up first
                 </Link>{' '}
               </p>
+              <p className="text-lg text-white">
+                Forgot password?{' '}
+                <span
+                  onClick={async () => {
+                    await sendPasswordResetEmail(userInfo.email);
+                    toast.success('Reset password Link has been sent');
+                  }}
+                  className="text-blue-500 underline cursor-pointer"
+                >
+                  Click here to reset password
+                </span>{' '}
+              </p>
+              <Toaster position="top-right" reverseOrder={false} />
               <div className="pt-5">
                 <input
                   className="rounded tracking-wide text-slate-100 border-black bg-black hover:text-slate-400 w-full p-2 transition-all duration-300 ease-in-out text-xl cursor-pointer"

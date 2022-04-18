@@ -5,10 +5,10 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
+import toast, { Toaster } from 'react-hot-toast';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const SignUp = () => {
@@ -95,14 +95,14 @@ const SignUp = () => {
     if (error) {
       switch (error?.code) {
         case 'auth/invalid-email':
-          toast('Invalid email provided, please provide a valid email');
+          toast.error('Invalid email provided, please provide a valid email');
           break;
 
         case 'auth/invalid-password':
-          toast('Wrong password. Intruder!!');
+          toast.error('Wrong password. Intruder!!');
           break;
         default:
-          toast('something went wrong');
+          toast.error('something went wrong');
       }
     }
   }, [hookError, errorGithub, errorGoogle]);
@@ -110,17 +110,6 @@ const SignUp = () => {
   return (
     <>
       <section className="my-5">
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
         <div className="w-11/12 sm:w-4/5 md:w-4/6 lg:w-2/5 mx-auto px-5 xl:px-10 border-gray-700 shadow rounded-lg bg-gray-800 py-5">
           <div className="pt-3 pb-10">
             <h3 className="tracking-wide text-center text-md text-gray-300 py-4">
@@ -212,6 +201,7 @@ const SignUp = () => {
                   <p className="error-message">{errors.confirmPassError}</p>
                 )}
               </div>
+              <Toaster position="top-right" reverseOrder={false} />
               <p className="text-lg text-white mt-4">
                 Already have an account?{' '}
                 <Link className="text-blue-500 underline" to="/login">
