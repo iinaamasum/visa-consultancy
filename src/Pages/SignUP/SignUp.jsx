@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  useCreateUserWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
@@ -12,6 +13,68 @@ const SignUp = () => {
     useSignInWithGoogle(auth);
   const [signInWithGithub, userGithub, loadingGithub, errorGithub] =
     useSignInWithGithub(auth);
+
+  // const [userReceived, loadingReceived, errorReceived] = useAuthState(auth);
+
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [errors, setErrors] = useState({
+    emailError: '',
+    passwordError: '',
+    confirmPasswordError: '',
+    otherError: '',
+  });
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const handleEmail = (e) => {
+    const passRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (passRegex.test(e.target.value)) {
+      setUserInfo({ ...userInfo, email: e.target.value });
+      setErrors({ ...errors, emailError: '' });
+    } else {
+      setUserInfo({ ...userInfo, email: '' });
+      setErrors({
+        ...errors,
+        emailError: 'Invalid Email. Please enter a valid email address.',
+      });
+    }
+  };
+
+  const handlePassword = (e) => {
+    const passRegex = /(?=.*[!#$%&? "])/;
+    if (passRegex.test(e.target.value)) {
+      setUserInfo({ ...userInfo, password: e.target.value });
+      setErrors({ ...errors, passwordError: '' });
+    } else {
+      setErrors({
+        ...errors,
+        passwordError:
+          'Provide a pass of greater than 6 char with a special char',
+      });
+      setUserInfo({ ...userInfo, password: '' });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (userInfo.password !== userInfo.confirmPassword) {
+      setErrors({ ...errors, confirmPassword: 'Password Mismatched' });
+      setUserInfo({ ...userInfo, confirmPassword: '' });
+    } else {
+      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    }
+  };
+
+  useEffect(() => {
+    console.log(userInfo);
+    console.log(errors);
+  }, [user]);
 
   return (
     <>
@@ -43,22 +106,12 @@ const SignUp = () => {
             <h3 className="tracking-wide text-center text-md text-gray-300 pt-3 pb-2">
               Or register with credentials
             </h3>
-            <form className="w-3/4 mx-auto">
-              <div>
-                <label
-                  className="text-xl text-slate-200 tracking-wide"
-                  htmlFor="Name"
-                >
-                  Your Name
-                </label>
-                <br />
-                <input
-                  className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
-                  type="text"
-                  name="name"
-                  placeholder="Enter Your Full Name"
-                />
-              </div>
+            <div className="text-white text-xl text-center">
+              {loading ? <p>Loading...</p> : ''}
+              {error ? <p>Error: {error.message}</p> : ''}
+              {user ? <p>Registered User: {user.email}</p> : ''}
+            </div>
+            <form onSubmit={handleFormSubmit} className="w-3/4 mx-auto">
               <div className="pt-4">
                 <label
                   className="text-xl text-slate-200 tracking-wide"
@@ -68,10 +121,12 @@ const SignUp = () => {
                 </label>
                 <br />
                 <input
+                  onChange={handleEmail}
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="email"
                   name="email"
                   placeholder="Enter Your Email"
+                  required
                 />
               </div>
 
@@ -84,11 +139,13 @@ const SignUp = () => {
                 </label>
                 <br />
                 <input
+                  onChange={handlePassword}
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
                   name="password"
                   id=""
                   placeholder="Enter Your Password"
+                  required
                 />
               </div>
               <div className="pt-4">
@@ -100,10 +157,17 @@ const SignUp = () => {
                 </label>
                 <br />
                 <input
+                  onChange={(e) =>
+                    setUserInfo({
+                      ...userInfo,
+                      confirmPassword: e.target.value,
+                    })
+                  }
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
                   name="confirm-password"
                   placeholder="Enter The Same Password"
+                  required
                 />
               </div>
 

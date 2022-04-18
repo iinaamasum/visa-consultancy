@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  useSignInWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
@@ -13,42 +14,17 @@ const Login = () => {
   const [signInWithGithub, userGithub, loadingGithub, errorGithub] =
     useSignInWithGithub(auth);
 
-  if (errorGithub) {
-    return (
-      <div>
-        <p>Error: {errorGithub.message}</p>
-      </div>
-    );
-  }
-  if (loadingGithub) {
-    return <p>Loading...</p>;
-  }
-  if (userGithub) {
-    console.log(userGithub);
-    return (
-      <div>
-        <p>Signed In User: {userGithub?.user?.displayName}</p>
-      </div>
-    );
-  }
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
-  if (errorGoogle) {
-    return (
-      <div>
-        <p>Error: {errorGoogle.message}</p>
-      </div>
-    );
-  }
-  if (loadingGoogle) {
-    return <p>Loading...</p>;
-  }
-  if (userGoogle) {
-    return (
-      <div>
-        <p>Signed In User: {userGoogle.email}</p>
-      </div>
-    );
-  }
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -80,7 +56,8 @@ const Login = () => {
             <h3 className="tracking-wide text-center text-md text-gray-300 pt-3 pb-2">
               Or sign in with credentials
             </h3>
-            <form className="w-3/4 mx-auto">
+
+            <form onSubmit={handleSignIn} className="w-3/4 mx-auto">
               <div className="">
                 <label
                   className="text-xl text-slate-200 tracking-wide"
@@ -90,6 +67,9 @@ const Login = () => {
                 </label>
                 <br />
                 <input
+                  onBlur={(e) =>
+                    setUserInfo({ ...userInfo, email: e.target.value })
+                  }
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="email"
                   name="email"
@@ -105,6 +85,9 @@ const Login = () => {
                 </label>
                 <br />
                 <input
+                  onBlur={(e) =>
+                    setUserInfo({ ...userInfo, password: e.target.value })
+                  }
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
                   name="password"
