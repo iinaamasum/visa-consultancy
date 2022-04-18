@@ -7,7 +7,8 @@ import {
 } from 'react-firebase-hooks/auth';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const SignUp = () => {
@@ -27,12 +28,14 @@ const SignUp = () => {
   const [errors, setErrors] = useState({
     emailError: '',
     passwordError: '',
-    confirmPasswordError: '',
+    confirmPassError: '',
     otherError: '',
   });
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, hookError] =
+    useCreateUserWithEmailAndPassword(auth, {
+      sendEmailVerification: true,
+    });
 
   const handleEmail = (e) => {
     const passRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,17 +52,26 @@ const SignUp = () => {
   };
 
   const handlePassword = (e) => {
-    const passRegex = /(?=.*[!#$%&? "])/;
-    if (passRegex.test(e.target.value)) {
+    const passwordRegex = /(?=.*[!#$%&?^* "])/;
+    const validPassword = passwordRegex.test(e.target.value);
+    if (validPassword) {
       setUserInfo({ ...userInfo, password: e.target.value });
       setErrors({ ...errors, passwordError: '' });
     } else {
       setErrors({
         ...errors,
-        passwordError:
-          'Provide a pass of greater than 6 char with a special char',
+        passwordError: 'Minimum 6 characters with special char!',
       });
       setUserInfo({ ...userInfo, password: '' });
+    }
+  };
+  console.log(userInfo.password);
+
+  const handleConfirmPassword = (e) => {
+    setUserInfo({ ...userInfo, confirmPassword: e.target.value });
+    if (userInfo.password !== userInfo.confirmPassword) {
+      setErrors({ ...errors, confirmPasswordError: 'Password Mismatched' });
+      setUserInfo({ ...userInfo, confirmPassword: '' });
     }
   };
 
@@ -78,10 +90,37 @@ const SignUp = () => {
       navigate('/');
     }
   }, [user1]);
+  useEffect(() => {
+    const error = hookError || errorGoogle || errorGithub;
+    if (error) {
+      switch (error?.code) {
+        case 'auth/invalid-email':
+          toast('Invalid email provided, please provide a valid email');
+          break;
+
+        case 'auth/invalid-password':
+          toast('Wrong password. Intruder!!');
+          break;
+        default:
+          toast('something went wrong');
+      }
+    }
+  }, [hookError, errorGithub, errorGoogle]);
 
   return (
     <>
       <section className="my-5">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <div className="w-11/12 sm:w-4/5 md:w-4/6 lg:w-2/5 mx-auto px-5 xl:px-10 border-gray-700 shadow rounded-lg bg-gray-800 py-5">
           <div className="pt-3 pb-10">
             <h3 className="tracking-wide text-center text-md text-gray-300 py-4">
@@ -127,6 +166,9 @@ const SignUp = () => {
                   placeholder="Enter Your Email"
                   required
                 />
+                {errors?.emailError && (
+                  <p className="error-message">{errors.emailError}</p>
+                )}
               </div>
 
               <div className="pt-4">
@@ -146,6 +188,9 @@ const SignUp = () => {
                   placeholder="Enter Your Password"
                   required
                 />
+                {errors?.passwordError && (
+                  <p className="error-message">{errors.passwordError}</p>
+                )}
               </div>
               <div className="pt-4">
                 <label
@@ -156,21 +201,24 @@ const SignUp = () => {
                 </label>
                 <br />
                 <input
-                  onChange={(e) =>
-                    setUserInfo({
-                      ...userInfo,
-                      confirmPassword: e.target.value,
-                    })
-                  }
+                  onChange={(e) => handleConfirmPassword}
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
                   name="confirm-password"
                   placeholder="Enter The Same Password"
                   required
                 />
+                {errors?.confirmPassError && (
+                  <p className="error-message">{errors.confirmPassError}</p>
+                )}
               </div>
-
-              <div className="pt-8">
+              <p className="text-lg text-white mt-4">
+                Already have an account?{' '}
+                <Link className="text-blue-500 underline" to="/login">
+                  Log In
+                </Link>{' '}
+              </p>
+              <div className="pt-5">
                 <input
                   className="rounded tracking-wide text-slate-100 border-black bg-black hover:text-slate-400 w-full p-2 transition-all duration-300 ease-in-out text-xl cursor-pointer"
                   type="submit"

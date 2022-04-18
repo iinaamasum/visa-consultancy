@@ -7,8 +7,9 @@ import {
 } from 'react-firebase-hooks/auth';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import './Login.css';
 
 const Login = () => {
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
@@ -46,8 +47,21 @@ const Login = () => {
   };
 
   const handlePasswordLogIn = (e) => {
-    setUserInfo({ ...userInfo, password: e.target.value });
+    const passwordRegex = /(?=.*[!#$%&?^* "])/;
+    const validPassword = passwordRegex.test(e.target.value);
+    if (validPassword) {
+      setUserInfo({ ...userInfo, password: e.target.value });
+      setErrors({ ...errors, passwordError: '' });
+    } else {
+      setErrors({
+        ...errors,
+        passwordError: 'Minimum 6 characters with special char!',
+      });
+      setUserInfo({ ...userInfo, password: '' });
+    }
   };
+
+  console.log(userInfo);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -111,6 +125,9 @@ const Login = () => {
                   name="email"
                   placeholder="Enter Your Email"
                 />
+                {errors?.emailError && (
+                  <p className="error-message">{errors.emailError}</p>
+                )}
               </div>
               <div className="pt-4">
                 <label
@@ -127,14 +144,24 @@ const Login = () => {
                   name="password"
                   placeholder="Enter Your Password"
                 />
+                {errors?.passwordError && (
+                  <p className="error-message">{errors.passwordError}</p>
+                )}
               </div>
               <div className="pt-4 flex items-center justify-left">
                 <input className="w-4 text-cyan-500" type="checkbox" name="" />
+
                 <small className="pl-2 text-cyan-500 text-semibold tracking-wide">
                   Remember Me
                 </small>
               </div>
-              <div className="pt-8">
+              <p className="text-lg text-white pt-4">
+                Don't have an account?{' '}
+                <Link className="text-blue-500 underline" to="/signup">
+                  Sign up first
+                </Link>{' '}
+              </p>
+              <div className="pt-5">
                 <input
                   className="rounded tracking-wide text-slate-100 border-black bg-black hover:text-slate-400 w-full p-2 transition-all duration-300 ease-in-out text-xl cursor-pointer"
                   type="submit"
