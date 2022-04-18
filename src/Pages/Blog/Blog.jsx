@@ -9,7 +9,7 @@ const Blog = () => {
       <div className="h-full">
         <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 m-5">
           <div className="px-5 py-10 shadow">
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-3xl font-semibold">
               Why are you using firebase? What other options do you have to
               implement authentication?
             </h1>
@@ -24,8 +24,8 @@ const Blog = () => {
               called react firebase hooks. The other authentication system
               are... <br /> 1) custom backend own setup <br />
               2) OAuth 2.0 <br /> 3) API token <br /> 4) Cookie-Based
-              authentication <br /> 5) Token-Based authentication 6) OpenId,
-              SAML
+              authentication <br /> 5) Token-Based authentication <br /> 6)
+              OpenId, SAML
             </p>
           </div>
           <div className="px-5 py-10 shadow">
