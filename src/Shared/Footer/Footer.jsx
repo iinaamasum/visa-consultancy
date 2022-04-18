@@ -77,7 +77,7 @@ const Footer = () => {
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-4 lg:mt-12 w-full">
+          <div className="flex  justify-between gap-4 lg:mt-12 w-full">
             <div className="w-1/3">
               <p className="font-bold text-white text-xl">Important Links</p>
 
@@ -95,11 +95,15 @@ const Footer = () => {
             </div>
 
             <div className="text-gray-400 w-2/3 text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              ipsa, libero sit dolorum quos ut nostrum veniam neque magni nobis
-              ad harum rem, similique praesentium aperiam eius corrupti
-              reprehenderit quibusdam? Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Exercitationem, maiores?
+              - 👋 Hi, I’m Md. Masum Mia <br /> - 👀 I’m interested in Mechine
+              Learning, Data Mining and AI. Currently I am doing development
+              work based on Web. Also I have interest in problem solving in
+              various online judge. I want to be a Data Scientist or Data
+              Analytics. Please pray for my bright future. <br /> - 🌱 I’m
+              currently studying in department of CSE at Rajshahi University of
+              Engineering and Technology ... <br /> - 💞️ I’m looking for a job
+              to sharp my development skill. <br /> - 📫 You can email or send
+              message in LinkedIn <br /> Email: iinaamasum@gmail.com
             </div>
           </div>
 
