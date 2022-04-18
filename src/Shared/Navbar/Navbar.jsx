@@ -54,18 +54,31 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <div className="lg:flex lg:items-center lg:justify-center w-full lg:w-auto">
-              {navLinks.map((link) => (
-                <Link
-                  className="text-xl text-slate-400 hover:text-red-800 active:text-red-700 font-semibold mr-0 md:mr-4 transition-all duration-500 ease-in-out"
-                  key={link.id}
-                  to={link.path}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <ul className="flex flex-col lg:flex-row list-none lg:ml-auto items-left">
+                {navLinks.map((link) => (
+                  <li
+                    key={link.id}
+                    className="nav-item text-xl text-white md:ml-4"
+                  >
+                    <Link
+                      className="text-xl text-slate-400 hover:text-red-800 active:text-red-700 font-semibold mr-0 md:mr-4 transition-all duration-500 ease-in-out"
+                      to={link.path}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
               {user ? (
-                <div className="text-xl">
-                  {user?.displayName ? user.displayName : 'Name Not Set '}
+                <div className="text-xl text-red-600 font-bold">
+                  {user?.displayName ? (
+                    <span className="bg-slate-200 mr-4 rounded-lg px-6 py-2 ">
+                      {user.displayName}
+                    </span>
+                  ) : (
+                    'Name Not Set '
+                  )}
                   <button
                     onClick={() => signOut(auth)}
                     className="bg-red-500 text-white active:bg-red-600
@@ -76,7 +89,7 @@ export default function Navbar() {
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center w-full lg:w-auto">
+                <div className="flex items-center w-full lg:w-auto pt-3 md:pt-0">
                   <BsFillCartFill
                     onClick={() => navigate('/checkout')}
                     className="text-3xl inline-flex items-center mr-6 text-red-600 cursor-pointer hover:text-red-700"

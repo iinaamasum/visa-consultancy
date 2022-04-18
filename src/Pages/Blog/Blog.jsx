@@ -50,7 +50,7 @@ const Blog = () => {
             <div className="flex justify-end mt-4"></div>
           </div>
         </div>
-        <div className="grid grid-flow-row gap-4 md:gap-10 px-6">
+        <div className="grid grid-flow-row gap-4 md:gap-10 px-0 md:px-6">
           <table class="table-fixed w-full py-10 my-10 shadow">
             <thead>
               <tr className="text-2xl">

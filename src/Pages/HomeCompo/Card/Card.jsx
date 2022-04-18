@@ -71,7 +71,7 @@ const Card = ({ service }) => {
             </span>
           </div>
           <button
-            onClick={() => navigate(`/checkout/${service.id}`)}
+            onClick={() => navigate(`/checkout`)}
             className="text-black font-sans tracking-wide font-bold text-xl mr-3 hover:bg-slate-500 px-5 py-2 rounded-full hover:text-white shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-full mt-6 hover:shadow-xl inline-flex justify-center items-center sticky bottom-0"
             type="button"
           >

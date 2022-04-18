@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Membership = () => {
   const [price, setPrice] = useState([49.99, 99.99, 139.99, 259.99]);
@@ -12,6 +13,7 @@ const Membership = () => {
     setPrice([49.99 * 12, 99.99 * 12, 139.99 * 12, 259.99 * 12]);
     setTxt('ann');
   };
+  const navigate = useNavigate();
 
   return (
     <>
@@ -103,7 +105,10 @@ const Membership = () => {
                   </span>
                   Packaging guidance
                 </p>
-                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out"
+                >
                   Check Out
                   <svg
                     fill="none"
@@ -197,7 +202,10 @@ const Membership = () => {
                   </span>
                   Short Time Visa Achieving Promise
                 </p>
-                <button className="flex items-center justify-center mt-auto bg-indigo-500 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-indigo-700 text-white text-xl">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="flex items-center justify-center mt-auto bg-indigo-500 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-indigo-700 text-white text-xl"
+                >
                   Check Out
                   <svg
                     fill="none"
@@ -304,7 +312,10 @@ const Membership = () => {
                   </span>
                   Part Time Job Finding
                 </p>
-                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out"
+                >
                   Check Out
                   <svg
                     fill="none"
@@ -427,7 +438,10 @@ const Membership = () => {
                   </span>
                   Short Time Visa Achieving Promise
                 </p>
-                <button className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="flex items-center justify-center mt-auto text-black bg-gray-200 shadow border-0 rounded-full py-2 px-4 w-full focus:outline-none hover:bg-blue-500 hover:text-white text-xl transition-all duration-200 ease-in-out"
+                >
                   Check Out
                   <svg
                     fill="none"
