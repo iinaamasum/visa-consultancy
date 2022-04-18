@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGithub,
@@ -6,6 +6,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -14,17 +15,51 @@ const Login = () => {
   const [signInWithGithub, userGithub, loadingGithub, errorGithub] =
     useSignInWithGithub(auth);
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
   });
+  const [errors, setErrors] = useState({
+    emailError: '',
+    passwordError: '',
+    otherError: '',
+  });
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleEmailLogIn = (e) => {
+    const passRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (passRegex.test(e.target.value)) {
+      setUserInfo({ ...userInfo, email: e.target.value });
+      setErrors({ ...errors, emailError: '' });
+    } else {
+      setUserInfo({ ...userInfo, email: '' });
+      setErrors({
+        ...errors,
+        emailError: 'Invalid Email. Please enter a valid email address.',
+      });
+    }
+  };
+
+  const handlePasswordLogIn = (e) => {
+    setUserInfo({ ...userInfo, password: e.target.value });
+  };
 
   const handleSignIn = (e) => {
     e.preventDefault();
+    signInWithEmailAndPassword(userInfo.email, userInfo.password);
   };
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    if (user) {
+      navigate(from);
+    }
+  }, [user]);
 
   return (
     <>
@@ -67,9 +102,7 @@ const Login = () => {
                 </label>
                 <br />
                 <input
-                  onBlur={(e) =>
-                    setUserInfo({ ...userInfo, email: e.target.value })
-                  }
+                  onChange={handleEmailLogIn}
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="email"
                   name="email"
@@ -85,9 +118,7 @@ const Login = () => {
                 </label>
                 <br />
                 <input
-                  onBlur={(e) =>
-                    setUserInfo({ ...userInfo, password: e.target.value })
-                  }
+                  onChange={handlePasswordLogIn}
                   className="w-full rounded outline-none px-4 py-3 bg-slate-300 focus:bg-slate-100 text-black font-sans font-medium text-md"
                   type="password"
                   name="password"

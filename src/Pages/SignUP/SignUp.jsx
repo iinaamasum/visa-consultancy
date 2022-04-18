@@ -64,7 +64,7 @@ const SignUp = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (userInfo.password !== userInfo.confirmPassword) {
-      setErrors({ ...errors, confirmPassword: 'Password Mismatched' });
+      setErrors({ ...errors, confirmPasswordError: 'Password Mismatched' });
       setUserInfo({ ...userInfo, confirmPassword: '' });
     } else {
       createUserWithEmailAndPassword(userInfo.email, userInfo.password);
