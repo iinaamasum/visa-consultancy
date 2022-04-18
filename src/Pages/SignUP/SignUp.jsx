@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const SignUp = () => {
@@ -14,7 +16,7 @@ const SignUp = () => {
   const [signInWithGithub, userGithub, loadingGithub, errorGithub] =
     useSignInWithGithub(auth);
 
-  // const [userReceived, loadingReceived, errorReceived] = useAuthState(auth);
+  const [user1] = useAuthState(auth);
 
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -71,10 +73,12 @@ const SignUp = () => {
     }
   };
 
+  const navigate = useNavigate();
   useEffect(() => {
-    console.log(userInfo);
-    console.log(errors);
-  }, [user]);
+    if (user1) {
+      navigate('/');
+    }
+  }, [user1]);
 
   return (
     <>
@@ -106,11 +110,7 @@ const SignUp = () => {
             <h3 className="tracking-wide text-center text-md text-gray-300 pt-3 pb-2">
               Or register with credentials
             </h3>
-            <div className="text-white text-xl text-center">
-              {loading ? <p>Loading...</p> : ''}
-              {error ? <p>Error: {error.message}</p> : ''}
-              {user ? <p>Registered User: {user.email}</p> : ''}
-            </div>
+            <div className="text-white text-xl text-center"></div>
             <form onSubmit={handleFormSubmit} className="w-3/4 mx-auto">
               <div className="pt-4">
                 <label

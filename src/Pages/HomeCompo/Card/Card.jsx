@@ -1,8 +1,10 @@
 import React from 'react';
 import { MdArrowForwardIos } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({ service }) => {
   const { name, price, img, des } = service;
+  const navigate = useNavigate();
   return (
     <div className="">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition-all duration-150 ease-in-out">
@@ -69,6 +71,7 @@ const Card = ({ service }) => {
             </span>
           </div>
           <button
+            onClick={() => navigate(`/checkout/${service.id}`)}
             className="text-black font-sans tracking-wide font-bold text-xl mr-3 hover:bg-slate-500 px-5 py-2 rounded-full hover:text-white shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 w-full mt-6 hover:shadow-xl inline-flex justify-center items-center sticky bottom-0"
             type="button"
           >
