@@ -1,4 +1,3 @@
-import React from 'react';
 import Review from '../Review/Review';
 
 const Reviews = () => {
@@ -21,7 +20,7 @@ const Reviews = () => {
       id: 3,
       name: 'Kulsum Begum',
       work: 'House Wife',
-      des: 'I was a patient. I had to go out side of the country for better treatment. This guy helped me a lot. In this situation, I just do not have to think about visa at all.',
+      des: 'I was a patient. I had to go out side of the country for better treatment. This guy helped me a lot. In this situation, I just do not have to think about visa at all. Thank you.',
       img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
     },
     {
@@ -33,7 +32,7 @@ const Reviews = () => {
     },
   ];
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font container mx-auto px-3 md:px-6 max-w-[1350px]">
       <h1 className="text-center text-4xl text-red-500  mt-10 mb-5 font-bold hover:text-red-600">
         <span className="border-b-4 border-red-600 ">Reviews Corner</span>
       </h1>

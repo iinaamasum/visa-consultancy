@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About/About';
-import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
 import Contact from './Pages/Contact/Contact';
 import Error404 from './Pages/Error404/Error404';
@@ -23,7 +22,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Blog />} />
+        {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/membership" element={<Membership />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/logout" element={<Logout />} /> */}

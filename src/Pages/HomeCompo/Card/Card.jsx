@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ const Card = ({ service }) => {
         />
         <div className="px-6 py-2">
           <div className="border-l-2 border-red-600 my-4">
-            <h2 className="pl-3 py-0 tracking-wide text-3xl title-font font-medium text-red-600 mb-1">
+            <h2 className="pl-3 py-0 tracking-wide text-xl title-font font-medium text-red-600 mb-1">
               {name}
             </h2>
           </div>
@@ -23,7 +22,7 @@ const Card = ({ service }) => {
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
             Cost: {price}
           </h1>
-          <p className="leading-relaxed mb-3">{des.slice(0, 150)}...</p>
+          <p className="leading-relaxed text-sm mb-3">{des.slice(0, 150)}...</p>
           <div className="flex items-center flex-wrap ">
             <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
               Learn More

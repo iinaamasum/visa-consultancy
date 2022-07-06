@@ -1,11 +1,10 @@
-import React from 'react';
 import useServiceData from '../../../hooks/useServiceData';
 import Card from '../Card/Card';
 
 const Services = () => {
   const services = useServiceData();
   return (
-    <div>
+    <div className="container mx-auto px-3 md:px-6 max-w-[1350px]">
       <h1 className="text-center text-4xl text-red-500  mt-10 mb-5 font-bold hover:text-red-600">
         <span className="border-b-4 border-red-600 ">Offered Services</span>
       </h1>
